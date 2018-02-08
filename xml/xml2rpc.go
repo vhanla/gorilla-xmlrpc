@@ -151,7 +151,8 @@ func value2Field(value value, field *reflect.Value) error {
 		}
 		f = reflect.AppendSlice(f, slice)
 		val = f.Interface()
-
+	case len(value.Array) == 0:
+		// in case an empty array is sent in request, val remains unchanged
 	default:
 		// value field is default to string, see http://en.wikipedia.org/wiki/XML-RPC#Data_types
 		// also can be <nil/>
